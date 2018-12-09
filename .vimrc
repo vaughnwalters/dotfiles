@@ -20,7 +20,6 @@ set backspace=indent,eol,start
 set number
 set shiftround
 set wrap
-set cc=120
 set showmatch
 set ignorecase
 set smartcase
@@ -43,9 +42,22 @@ set undoreload=10000
 " Update Time for git gutters to appear
 set updatetime=100
 
+" heresy
+set mouse=a
+
 " Colors
 highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
 set background=dark
+
+ " ctags optimization
+ set autochdir
+ set tags=tags
+
+"folding
+set foldmethod=syntax
+
+" all folds open as default when opening new file
+set nofoldenable
 
 " Vundle
 " set the runtime path to include Vundle and initialize
@@ -141,6 +153,13 @@ nnoremap <Leader>cg oconsole.log('\x1b[42m','','\x1b[0m');<Esc>4F'a
 " indent entire page
 nnoremap <Leader>i gg=G<C-o><C-o><C-d>
 
+" create blank line in normal mode
+nnoremap <silent> zj o<Esc>k
+nnoremap <silent> zk O<Esc>j
+
+" esc to clear word search highlighting
+nnoremap \\ :noh<return><esc>
+
 " double // to comment lines in visual block
 vnoremap // :normal mnI// <Esc>`n
 
@@ -188,4 +207,5 @@ let NERDTreeShowHidden=1
  let g:move_key_modifier = 'C' 
 
 syntax enable
+
 
