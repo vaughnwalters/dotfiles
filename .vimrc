@@ -42,8 +42,11 @@ set undoreload=10000
 " Update Time for git gutters to appear
 set updatetime=100
 
-" heresy
-set mouse=a
+" Go to root of project to search
+cnoreabbrev ag Gcd <bar> Ack!
+
+" not forced so save when switching buffers
+set hidden
 
 " Colors
 highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
@@ -154,11 +157,14 @@ nnoremap <Leader>cg oconsole.log('\x1b[42m','','\x1b[0m');<Esc>4F'a
 nnoremap <Leader>i gg=G<C-o><C-o><C-d>
 
 " create blank line in normal mode
-nnoremap <silent> zj o<Esc>k
-nnoremap <silent> zk O<Esc>j
+nnoremap <silent> zk o<Esc>k
+nnoremap <silent> zj O<Esc>j
 
-" esc to clear word search highlighting
+" \\ to clear word search highlighting
 nnoremap \\ :noh<return><esc>
+
+" ff to close buffer
+nnoremap ff :bd!<return><esc>
 
 " double // to comment lines in visual block
 vnoremap // :normal mnI// <Esc>`n
@@ -176,8 +182,16 @@ vnoremap <Leader>y "+y
 " ack settings - dont auto open first result
 cnoreabbrev ack Ack!
 
+" skip one letter to the right in insert mode
+inoremap jj <Esc>
+
 " search through project with word currently under cursor
 map <F4> :execute "Ack! '" . expand("<cword>") . "'"<CR>
+
+" use ag with ack
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
 
 " syntastic config
 set statusline+=%#warningmsg#
@@ -203,9 +217,8 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 " show hidden files in NERDTree
 let NERDTreeShowHidden=1
 
-" move lines up and down using ctrl h or ctrl j
- let g:move_key_modifier = 'C' 
+" move lines up and down using ctrl j or ctrl k
+let g:move_key_modifier = 'C' 
 
 syntax enable
-
 
