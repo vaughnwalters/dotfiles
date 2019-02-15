@@ -82,9 +82,9 @@ Plugin 'scrooloose/nerdTree'
 
 Plugin 'editorconfig/editorconfig-vim'
 
-Bundle 'scrooloose/syntastic'
-
 Bundle 'geoffharcourt/vim-matchit'
+
+Plugin 'w0rp/ale'
 
 Plugin 'pangloss/vim-javascript'
 
@@ -109,6 +109,16 @@ filetype plugin indent on
 set omnifunc=syntaxcomplete#Complete
 let g:ycm_confirm_extra_conf = 0
 
+" ale config
+let g:ale_sign_error = '->' " Less aggressive than the default '>>'
+let g:ale_sign_warning = '.'
+let g:ale_fix_on_save = 1
+let g:ale_fixers = {
+\   'javascript': ['eslint'],
+\}
+highlight ALEErrorSign ctermbg=NONE ctermfg=red
+highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
+
 " matchit/ctags
 runtime macros/matchit.vim
 set tags=./tags,tags;$HOME
@@ -124,7 +134,7 @@ au Filetype css,javascript
 " Use C-n to open/close Nerdtree
 map <silent> <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeWinSize = 40
-
+ 
 " ctrl-p
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
@@ -179,6 +189,12 @@ vnoremap <Leader>/ :normal mn^xxx`n<CR>
 nnoremap <Leader>p "+p
 vnoremap <Leader>y "+y
 
+" Remap normal mode to fj
+inoremap fj <ESC>
+inoremap <ESC> <NOP>
+vnoremap fj <ESC>
+vnoremap <ESC> <NOP>
+
 " ack settings - dont auto open first result
 cnoreabbrev ack Ack!
 
@@ -192,19 +208,6 @@ map <F4> :execute "Ack! '" . expand("<cword>") . "'"<CR>
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
-
-" syntastic config
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_loc_list_height = 5
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 1
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_enable_signs = 0
 
 " Airline config
 " Enable the list of buffers
@@ -221,4 +224,3 @@ let NERDTreeShowHidden=1
 let g:move_key_modifier = 'C' 
 
 syntax enable
-
