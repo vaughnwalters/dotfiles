@@ -1,4 +1,6 @@
-## My sweet ever changing vim config
+## Here's a repo for some of my sweet dot files
+
+### .vimrc
 
 touch ~/.vimrc
 
