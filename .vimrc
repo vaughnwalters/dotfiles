@@ -32,9 +32,12 @@ set completeopt-=preview
 " change split window styling
 highlight VertSplit cterm=NONE
 
-" Persistent undo
+" Persistent undo (must manually create this path)
 set undofile
 set undodir=$HOME/.vim/undo
+
+" swp file storage location (must manually create this path)
+set directory=$HOME/.vim/swapfiles//
 
 set undolevels=1000
 set undoreload=10000
@@ -102,6 +105,10 @@ Bundle 'matze/vim-move'
 
 Plugin 'airblade/vim-gitgutter'
 
+Plugin 'JamshedVesuna/vim-markdown-preview'
+
+Bundle 'edkolev/tmuxline.vim'
+
 call vundle#end()
 filetype plugin indent on
 
@@ -134,7 +141,14 @@ au Filetype css,javascript
 " Use C-n to open/close Nerdtree
 map <silent> <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeWinSize = 40
- 
+
+" Vim markdown preview
+" To display images automatically on buffer write.
+let vim_markdown_preview_toggle=2
+let vim_markdown_preview_browser='Google Chrome'
+let vim_markdown_preview_hotkey='<C-b>'
+let vim_markdown_preview_temp_file=1
+
 " ctrl-p
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
@@ -224,3 +238,4 @@ let NERDTreeShowHidden=1
 let g:move_key_modifier = 'C' 
 
 syntax enable
+
