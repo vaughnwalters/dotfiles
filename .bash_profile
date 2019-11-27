@@ -1,6 +1,9 @@
 # added by Miniconda3 installer
 export PATH="/Users/vaughnwalters/miniconda3/bin:$PATH"
 
+# eliminate zsh default shell warning
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
