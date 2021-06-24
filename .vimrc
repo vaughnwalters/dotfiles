@@ -36,8 +36,8 @@ highlight VertSplit cterm=NONE
 set undofile
 set undodir=$HOME/.vim/undo
 
-" swp file storage location (must manually create this path)
-set directory=$HOME/.vim/swapfiles//
+" Disable swapfiles
+set noswapfile 
 
 set undolevels=1000
 set undoreload=10000
@@ -59,7 +59,7 @@ set background=dark
  set autochdir
  set tags=tags
 
-"folding
+" folding
 set foldmethod=syntax
 
 " all folds open as default when opening new file
@@ -72,8 +72,6 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
-
-Plugin 'Valloric/YouCompleteMe'
 
 Plugin 'Raimondi/delimitMate'
 
@@ -111,10 +109,6 @@ Bundle 'edkolev/tmuxline.vim'
 
 call vundle#end()
 filetype plugin indent on
-
-" YouCompleteMe settings
-set omnifunc=syntaxcomplete#Complete
-let g:ycm_confirm_extra_conf = 0
 
 " ale config
 let g:ale_sign_error = '->' " Less aggressive than the default '>>'
@@ -238,4 +232,3 @@ let NERDTreeShowHidden=1
 let g:move_key_modifier = 'C' 
 
 syntax enable
-
