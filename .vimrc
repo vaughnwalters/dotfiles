@@ -65,50 +65,46 @@ set foldmethod=syntax
 " all folds open as default when opening new file
 set nofoldenable
 
-" Vundle
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
+" using vim-plug as package manager :PlugInstall to run
+call plug#begin('~/.vim/plugged')
 
-call vundle#begin()
+Plug 'Raimondi/delimitMate'
 
-Plugin 'VundleVim/Vundle.vim'
+Plug 'marijnh/tern_for_vim'
 
-Plugin 'Raimondi/delimitMate'
+Plug 'mattn/emmet-vim'
 
-Plugin 'marijnh/tern_for_vim'
+Plug 'scrooloose/nerdTree'
 
-Plugin 'mattn/emmet-vim'
+Plug 'editorconfig/editorconfig-vim'
 
-Plugin 'scrooloose/nerdTree'
+Plug 'geoffharcourt/vim-matchit'
 
-Plugin 'editorconfig/editorconfig-vim'
+Plug 'w0rp/ale'
 
-Bundle 'geoffharcourt/vim-matchit'
+Plug 'pangloss/vim-javascript'
 
-Plugin 'w0rp/ale'
+Plug 'mxw/vim-jsx'
 
-Plugin 'pangloss/vim-javascript'
+Plug 'vim-airline/vim-airline'
 
-Plugin 'mxw/vim-jsx'
+Plug 'mileszs/ack.vim'
 
-Plugin 'vim-airline/vim-airline'
+Plug 'ctrlpvim/ctrlp.vim'
 
-Plugin 'mileszs/ack.vim'
+Plug 'tpope/vim-fugitive'
 
-Plugin 'ctrlpvim/ctrlp.vim'
+Plug 'matze/vim-move'
 
-Plugin 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 
-Bundle 'matze/vim-move'
+Plug 'JamshedVesuna/vim-markdown-preview'
 
-Plugin 'airblade/vim-gitgutter'
+Plug 'edkolev/tmuxline.vim'
 
-Plugin 'JamshedVesuna/vim-markdown-preview'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-Bundle 'edkolev/tmuxline.vim'
-
-call vundle#end()
-filetype plugin indent on
+call plug#end()
 
 " ale config
 let g:ale_sign_error = '->' " Less aggressive than the default '>>'
@@ -232,3 +228,4 @@ let NERDTreeShowHidden=1
 let g:move_key_modifier = 'C' 
 
 syntax enable
+
