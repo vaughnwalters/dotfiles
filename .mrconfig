@@ -1,0 +1,44 @@
+[DEFAULT]
+lib = 
+	 update_git_repository () {
+	   git checkout master &&
+		 git for-each-ref --format '%(refname:short)' refs/heads | grep -v "master\|main" | xargs git branch -D
+	   git pull origin master
+	 }
+
+[workspace/gerrit/mediawiki]
+checkout = git clone 'ssh://vwalters@gerrit.wikimedia.org:29418/mediawiki/core.git' 'mediawiki'
+update = update_git_repository
+
+[workspace/gerrit/mediawiki/skins/Vector]
+checkout = git clone 'ssh://vwalters@gerrit.wikimedia.org:29418/mediawiki/skins/Vector' 'Vector'
+
+[workspace/gerrit/mediawiki/skins/MinervaNeue]
+checkout = git clone 'ssh://vwalters@gerrit.wikimedia.org:29418/mediawiki/skins/MinervaNeue' 'MinervaNeue'
+
+[workspace/gerrit/mediawiki/extensions/Echo]
+checkout = git clone 'ssh://vwalters@gerrit.wikimedia.org:29418/mediawiki/extensions/Echo.git' 'Echo'
+
+[workspace/gerrit/wikifunctions/mediawiki/extensions/EventLogging]
+checkout = git clone 'ssh://vwalters@gerrit.wikimedia.org:29418/mediawiki/extensions/EventLogging' 'EventLogging'
+
+[workspace/gerrit/wikifunctions/mediawiki/extensions/WikimediaMessages]
+checkout = git clone 'ssh://vwalters@gerrit.wikimedia.org:29418/mediawiki/extensions/WikimediaMessages' 'WikimediaMessages'
+
+[workspace/gerrit/wikifunctions/mediawiki/skins/Vector]
+checkout = git clone 'ssh://vwalters@gerrit.wikimedia.org:29418/mediawiki/skins/Vector' 'Vector'
+
+[workspace/gerrit/wikifunctions/mediawiki]
+checkout = git clone 'ssh://vwalters@gerrit.wikimedia.org:29418/mediawiki/core.git' 'mediawiki'
+
+[workspace/gerrit/mediawiki/extensions/WikimediaCampaignEvents]
+checkout = git clone 'ssh://vwalters@gerrit.wikimedia.org:29418/mediawiki/extensions/WikimediaCampaignEvents' 'WikimediaCampaignEvents'
+
+[workspace/gerrit/mediawiki/extensions/CampaignEvents]
+checkout = git clone 'ssh://vwalters@gerrit.wikimedia.org:29418/mediawiki/extensions/CampaignEvents' 'CampaignEvents'
+
+[workspace/gerrit/wikifunctions/mediawiki/extensions/WikiLambda]
+checkout = git clone 'ssh://vwalters@gerrit.wikimedia.org:29418/mediawiki/extensions/WikiLambda' 'WikiLambda'
+
+[workspace/gerrit/wikifunctions/mediawiki/extensions/UniversalLanguageSelector]
+checkout = git clone 'https://gerrit.wikimedia.org/r/mediawiki/extensions/UniversalLanguageSelector' 'UniversalLanguageSelector'
