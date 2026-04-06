@@ -47,6 +47,7 @@ export PATH=$PATH:~/.local/bin
 
 # Claude Code
 export CLAUDE_CODE_EFFORT_LEVEL=max
+alias claude="claude --chrome"
 
 # --- DIR_CONTENTS ---
 
