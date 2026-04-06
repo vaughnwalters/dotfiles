@@ -10,7 +10,6 @@ set shiftwidth=2
 set softtabstop=2
 set tabstop=2
 set smarttab
-set ai
 set si
 set autoindent
 set copyindent
@@ -55,9 +54,8 @@ set hidden
 highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
 set background=dark
 
- " ctags optimization
- set autochdir
- set tags=tags
+" ctags optimization
+set autochdir
 
 " folding
 set foldmethod=syntax
@@ -69,8 +67,6 @@ set nofoldenable
 call plug#begin('~/.vim/plugged')
 
 Plug 'Raimondi/delimitMate'
-
-Plug 'marijnh/tern_for_vim'
 
 Plug 'mattn/emmet-vim'
 
@@ -97,8 +93,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'matze/vim-move'
 
 Plug 'airblade/vim-gitgutter'
-
-Plug 'JamshedVesuna/vim-markdown-preview'
 
 Plug 'edkolev/tmuxline.vim'
 
@@ -131,13 +125,6 @@ au Filetype css,javascript
 " Use C-n to open/close Nerdtree
 map <silent> <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeWinSize = 40
-
-" Vim markdown preview
-" To display images automatically on buffer write.
-let vim_markdown_preview_toggle=2
-let vim_markdown_preview_browser='Google Chrome'
-let vim_markdown_preview_hotkey='<C-b>'
-let vim_markdown_preview_temp_file=1
 
 " ctrl-p
 let g:ctrlp_map = '<c-p>'
