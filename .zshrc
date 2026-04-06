@@ -30,12 +30,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
 
-# add ssh keys
-ssh-add --apple-use-keychain ~/.ssh/gerrit_rsa > /dev/null 2>&1
-ssh-add --apple-use-keychain ~/.ssh/gitlab_rsa > /dev/null 2>&1
-ssh-add --apple-use-keychain ~/.ssh/github_rsa > /dev/null 2>&1
-ssh-add --apple-use-keychain ~/.ssh/id_ed25519 > /dev/null 2>&1
-
 # Target MediaWiki-Docker
 export MW_SERVER=http://localhost:8080
 export MW_SCRIPT_PATH=/w
