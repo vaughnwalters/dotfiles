@@ -117,7 +117,7 @@ alias dcu="docker compose up -d"
 alias dcd="docker compose down"
 alias dcdu="docker compose down && docker compose up -d"
 alias dshell="docker compose exec mediawiki bash"
-alias postinstall="campaigns && nvm use 18 && npm ci && git remote remove origin && git remote add origin ssh://vwalters@gerrit.wikimedia.org:29418/mediawiki/extensions/CampaignEvents && git remote -v"
+alias postinstall="campaigns && nvm use 22 && npm ci && git remote remove origin && git remote add origin ssh://vwalters@gerrit.wikimedia.org:29418/mediawiki/extensions/CampaignEvents && git remote -v"
 alias please="sudo"
 alias mru="(cd ~ && mr u)"
 
@@ -130,14 +130,11 @@ export NVM_DIR="$HOME/.nvm"
 
 NVM_DIR=~/.nvm source ~/.nvm/nvm.sh
 
-# add ssh access for gerrit
-ssh-add --apple-use-keychain  ~/.ssh/gerrit_rsa
-
-# add ssh access for gitlab
-if ! pgrep -u "$USER" ssh-agent > /dev/null; then
-    eval "$(ssh-agent -s)"
-fi
-ssh-add ~/.ssh/gitlab_rsa 2>/dev/null
+# add ssh keys
+ssh-add --apple-use-keychain ~/.ssh/gerrit_rsa > /dev/null 2>&1
+ssh-add --apple-use-keychain ~/.ssh/gitlab_rsa > /dev/null 2>&1
+ssh-add --apple-use-keychain ~/.ssh/github_rsa > /dev/null 2>&1
+ssh-add --apple-use-keychain ~/.ssh/id_ed25519 > /dev/null 2>&1
 
 # Target MediaWiki-Docker
 export MW_SERVER=http://localhost:8080
@@ -147,6 +144,9 @@ export MEDIAWIKI_PASSWORD=dockerpass
 
 # for fresh
 export PATH=$PATH:~/.local/bin
+
+# Claude Code
+export CLAUDE_CODE_EFFORT_LEVEL=max
 
 # --- DIR_CONTENTS ---
 
@@ -222,4 +222,22 @@ function dir_contents() {
     done
 }
 
-                                                                                      zsh  utf-8[unix]  0% ㏑:1/224☰℅.:1
+
+# Added by Antigravity
+export PATH="/Users/vaughnwalters/.antigravity/antigravity/bin:$PATH"
+
+# quibble-local tab completion
+_quibble_component() {
+  local script_dir="${words[1]:A:h}"
+  if [[ -z "$_quibble_gated" ]] && [[ -x "$script_dir/gated" ]]; then
+    _quibble_gated="$("$script_dir"/gated 2>/dev/null)"
+  fi
+  local -a components=("${(@f)_quibble_gated}")
+  [[ -n "${components[1]}" ]] && compadd -- "${components[@]}"
+}
+for _cmd in install run_selenium_tests run_php_unit_tests run_selenium_tests_all \
+  run_selenium_tests_required dependencies dependencies_combinations \
+  dependencies_optional dependencies_required dependencies_minimal \
+  dependencies_minimal_bottom_up dependencies_minimal_thorough selenium_tests_exist
+do compdef _quibble_component "./$_cmd"; done
+unset _cmd
