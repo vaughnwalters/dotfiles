@@ -7,7 +7,7 @@ lib =
 	 }
 
 [workspace/gerrit/mediawiki]
-checkout = git clone 'ssh://vwalters@gerrit.wikimedia.org:29418/mediawiki/core.git' 'mediawiki'
+checkout = git clone 'https://gerrit.wikimedia.org/r/mediawiki/core.git' 'mediawiki'
 update = update_git_repository
 
 [workspace/gerrit/mediawiki/skins/Vector]
@@ -40,5 +40,27 @@ checkout = git clone 'ssh://vwalters@gerrit.wikimedia.org:29418/mediawiki/extens
 [workspace/gerrit/wikifunctions/mediawiki/extensions/WikiLambda]
 checkout = git clone 'ssh://vwalters@gerrit.wikimedia.org:29418/mediawiki/extensions/WikiLambda' 'WikiLambda'
 
+
 [workspace/gerrit/wikifunctions/mediawiki/extensions/UniversalLanguageSelector]
 checkout = git clone 'https://gerrit.wikimedia.org/r/mediawiki/extensions/UniversalLanguageSelector' 'UniversalLanguageSelector'
+
+[workspace/gerrit/mediawiki/extensions/EventLogging]
+checkout = git clone 'https://gerrit.wikimedia.org/r/mediawiki/extensions/EventLogging' 'EventLogging'
+
+[workspace/gerrit/mediawiki/extensions/Cite]
+checkout = git clone 'https://gerrit.wikimedia.org/r/mediawiki/extensions/Cite' 'Cite'
+
+[workspace/gerrit/mediawiki/extensions/CentralAuth]
+checkout = git clone 'ssh://vwalters@gerrit.wikimedia.org:29418/mediawiki/extensions/CentralAuth' 'CentralAuth'
+
+[workspace/gerrit/mediawiki/extensions/Wikibase]
+checkout = git clone 'https://gerrit.wikimedia.org/r/mediawiki/extensions/Wikibase' 'Wikibase'
+
+[workspace/gerrit/mediawiki/extensions/MobileFrontend]
+checkout = git clone 'https://gerrit.wikimedia.org/r/mediawiki/extensions/MobileFrontend' 'MobileFrontend'
+
+[workspace/gitlab/mediawiki-quickstart]
+checkout = git clone 'git@gitlab.wikimedia.org:repos/test-platform/mediawiki-quickstart.git' 'mediawiki-quickstart'
+
+[workspace/gerrit/mediawiki/extensions/cldr]
+checkout = git clone 'https://gerrit.wikimedia.org/r/mediawiki/extensions/cldr' 'cldr'
