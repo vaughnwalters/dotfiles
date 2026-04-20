@@ -49,6 +49,12 @@ if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
   git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
 fi
 
+if ! ls "$HOME/Library/Fonts/"SF-Mono-* >/dev/null 2>&1; then
+  echo "Installing SF Mono fonts for Alacritty..."
+  mkdir -p "$HOME/Library/Fonts"
+  cp /System/Applications/Utilities/Terminal.app/Contents/Resources/Fonts/SF-Mono-*.otf "$HOME/Library/Fonts/"
+fi
+
 echo "Installing Brewfile packages..."
 brew bundle --file="$DOTFILES/Brewfile"
 
