@@ -67,6 +67,6 @@ echo
 echo "Manual follow-up:"
 echo "  - Copy ~/.ssh/ from old Mac (or generate new keys and register with GitHub/GitLab/gerrit)"
 echo "  - Copy any credential dirs from old Mac as needed"
-echo "  - Install ~/.claude config (settings.json, skills, memory)"
+echo "  - Rsync ~/.claude/ from old Mac (excluding cache/ sessions/ shell-snapshots/ file-history/ paste-cache/ session-env/ telemetry/ usage-data/ history.jsonl)"
 echo "  - Sign into seat-limited apps (Sourcetree, 1Password, Adobe, JetBrains)"
 echo "  - Install Mac App Store apps"
