@@ -44,6 +44,11 @@ if [ ! -d "$HOME/.oh-my-zsh" ]; then
   RUNZSH=no KEEP_ZSHRC=yes sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 fi
 
+if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
+  echo "Installing TPM (tmux plugin manager)..."
+  git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
+fi
+
 echo "Installing Brewfile packages..."
 brew bundle --file="$DOTFILES/Brewfile"
 
@@ -79,3 +84,4 @@ echo "  - Rsync ~/.claude/ from old Mac (excluding cache/ sessions/ shell-snapsh
 echo "  - Sign into seat-limited apps (Sourcetree, 1Password, Adobe, JetBrains)"
 echo "  - Install Mac App Store apps"
 echo "  - Copy ~/Pictures/ from old Mac, then re-pick wallpaper + screen saver in System Settings"
+echo "  - Start tmux and press Ctrl-a then Shift-I to install tmux plugins"
