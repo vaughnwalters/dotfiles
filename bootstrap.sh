@@ -17,6 +17,17 @@ link() {
   ln -sfn "$src" "$dest"
 }
 
+echo "Machine flavor:"
+echo "  1) work"
+echo "  2) personal"
+read -p "Enter 1 or 2: " flavor_choice
+
+case "$flavor_choice" in
+  1) FLAVOR=work;     GIT_EMAIL="vwalters@wikimedia.org" ;;
+  2) FLAVOR=personal; GIT_EMAIL="vaughnwalters@gmail.com" ;;
+  *) echo "Invalid choice: $flavor_choice"; exit 1 ;;
+esac
+
 if ! command -v brew >/dev/null 2>&1; then
   echo "Installing Homebrew..."
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -32,19 +43,30 @@ echo "Installing Brewfile packages..."
 brew bundle --file="$DOTFILES/Brewfile"
 
 echo "Linking dotfiles..."
-for f in .bash_profile .bashrc .gitconfig .gitignore_global .ideavimrc .mrconfig .muttrc .tmux.conf .vimrc .zprofile .zshrc; do
+DOTFILE_NAMES=(.bash_profile .bashrc .gitconfig .gitignore_global .ideavimrc .muttrc .tmux.conf .vimrc .zprofile .zshrc)
+if [ "$FLAVOR" = work ]; then
+  DOTFILE_NAMES+=(.mrconfig)
+fi
+
+for f in "${DOTFILE_NAMES[@]}"; do
   link "$DOTFILES/$f" "$HOME/$f"
 done
 
 link "$DOTFILES/.config/git/ignore" "$HOME/.config/git/ignore"
 link "$DOTFILES/alacritty.toml" "$HOME/.config/alacritty/alacritty.toml"
 
+echo "Writing ~/.gitconfig.local with $FLAVOR email ($GIT_EMAIL)..."
+cat > "$HOME/.gitconfig.local" <<EOF
+[user]
+	email = $GIT_EMAIL
+EOF
+
 echo
-echo "Bootstrap complete."
+echo "Bootstrap complete ($FLAVOR)."
 echo
 echo "Manual follow-up:"
 echo "  - Copy ~/.ssh/ from old Mac (or generate new keys and register with GitHub/GitLab/gerrit)"
-echo "  - Copy credential dirs as needed: ~/.aws/ ~/.gcloud/ ~/.kube/ ~/.docker/ ~/.npmrc"
+echo "  - Copy any credential dirs from old Mac as needed"
 echo "  - Install ~/.claude config (settings.json, skills, memory)"
 echo "  - Sign into seat-limited apps (Sourcetree, 1Password, Adobe, JetBrains)"
 echo "  - Install Mac App Store apps"

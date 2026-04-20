@@ -1,6 +1,5 @@
 [user]
 	name = Vaughn Walters
-	email = vwalters@wikimedia.org
 [core]
 	excludesfile = /Users/vaughnwalters/.gitignore_global
 [difftool "sourcetree"]
@@ -17,3 +16,5 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[include]
+	path = ~/.gitconfig.local
