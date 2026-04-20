@@ -5,6 +5,10 @@ set -euo pipefail
 defaults write NSGlobalDomain KeyRepeat -int 2
 defaults write NSGlobalDomain InitialKeyRepeat -int 15
 
+# Trackpad + mouse: max tracking speed
+defaults write -g com.apple.trackpad.scaling -float 3
+defaults write -g com.apple.mouse.scaling -float 3
+
 # Remap CapsLock → Control (applied now + persisted via LaunchAgent for reboots)
 hidutil property --set '{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0x700000039,"HIDKeyboardModifierMappingDst":0x7000000E0}]}' >/dev/null
 mkdir -p "$HOME/Library/LaunchAgents"
