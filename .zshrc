@@ -118,9 +118,6 @@ function dir_contents() {
 }
 
 
-# Added by Antigravity
-export PATH="/Users/vaughnwalters/.antigravity/antigravity/bin:$PATH"
-
 # quibble-local tab completion
 _quibble_component() {
   local script_dir="${words[1]:A:h}"
