@@ -41,9 +41,6 @@ defaults write com.apple.dock tilesize -int 64
 # Dark mode
 defaults write NSGlobalDomain AppleInterfaceStyle -string "Dark"
 
-# Transparency: translucent menu bar + Spotlight (requires logout to fully apply)
-defaults write com.apple.universalaccess reduceTransparency -bool false
-
 killall Dock 2>/dev/null || true
 killall Finder 2>/dev/null || true
 
