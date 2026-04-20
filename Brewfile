@@ -1,4 +1,3 @@
-tap "homebrew/services"
 brew "curl"
 brew "git-review"
 brew "mas"
