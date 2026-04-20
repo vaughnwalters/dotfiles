@@ -23,10 +23,15 @@ echo "  2) personal"
 read -p "Enter 1 or 2: " flavor_choice
 
 case "$flavor_choice" in
-  1) FLAVOR=work;     GIT_EMAIL="vwalters@wikimedia.org" ;;
-  2) FLAVOR=personal; GIT_EMAIL="vaughnwalters@gmail.com" ;;
+  1) FLAVOR=work ;;
+  2) FLAVOR=personal ;;
   *) echo "Invalid choice: $flavor_choice"; exit 1 ;;
 esac
+
+read -p "Git email for this machine: " GIT_EMAIL
+if [ -z "$GIT_EMAIL" ]; then
+  echo "Email cannot be empty"; exit 1
+fi
 
 if ! command -v brew >/dev/null 2>&1; then
   echo "Installing Homebrew..."
