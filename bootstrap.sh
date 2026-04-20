@@ -55,6 +55,9 @@ done
 link "$DOTFILES/.config/git/ignore" "$HOME/.config/git/ignore"
 link "$DOTFILES/alacritty.toml" "$HOME/.config/alacritty/alacritty.toml"
 
+echo "Applying macOS defaults..."
+"$DOTFILES/macos.sh"
+
 echo "Writing ~/.gitconfig.local with $FLAVOR email ($GIT_EMAIL)..."
 cat > "$HOME/.gitconfig.local" <<EOF
 [user]
