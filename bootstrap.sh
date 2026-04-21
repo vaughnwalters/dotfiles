@@ -55,6 +55,11 @@ if ! ls "$HOME/Library/Fonts/"SF-Mono-* >/dev/null 2>&1; then
   cp /System/Applications/Utilities/Terminal.app/Contents/Resources/Fonts/SF-Mono-*.otf "$HOME/Library/Fonts/"
 fi
 
+if [ ! -x "$HOME/.local/bin/claude" ]; then
+  echo "Installing Claude CLI..."
+  curl -fsSL https://claude.ai/install.sh | bash
+fi
+
 echo "Installing Brewfile packages..."
 brew bundle --file="$DOTFILES/Brewfile"
 
@@ -91,6 +96,7 @@ echo "  - Sign into seat-limited apps (Sourcetree, 1Password, Adobe, JetBrains)"
 echo "  - Install Mac App Store apps"
 echo "  - Copy ~/Pictures/ from old Mac, then re-pick wallpaper + screen saver in System Settings"
 echo "  - Start tmux and press Ctrl-a then Shift-I to install tmux plugins"
+echo "  - Run 'claude' to re-authenticate Claude CLI (config from tar is preserved)"
 echo "  - System Settings → Accessibility → Display:"
 echo "      * check 'Reduce transparency' (opaque/black menu bar + Spotlight)"
 echo "      * check 'Reduce motion'"
