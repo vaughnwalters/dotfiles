@@ -62,5 +62,14 @@ checkout = git clone 'https://gerrit.wikimedia.org/r/mediawiki/extensions/Mobile
 [workspace/gitlab/mediawiki-quickstart]
 checkout = git clone 'git@gitlab.wikimedia.org:repos/test-platform/mediawiki-quickstart.git' 'mediawiki-quickstart'
 
+[workspace/gitlab/quibble-local]
+checkout = git clone 'git@gitlab.wikimedia.org:repos/test-platform/quibble-local.git' 'quibble-local'
+
 [workspace/gerrit/mediawiki/extensions/cldr]
 checkout = git clone 'https://gerrit.wikimedia.org/r/mediawiki/extensions/cldr' 'cldr'
+
+[workspace/gitlab/wmf-claude]
+checkout = git clone 'git@gitlab.wikimedia.org:kharlan/wmf-claude.git' 'wmf-claude'
+
+[workspace/gerrit/config]
+checkout = git clone 'ssh://vwalters@gerrit.wikimedia.org:29418/integration/config' 'config'

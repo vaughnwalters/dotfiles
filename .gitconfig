@@ -1,12 +1,14 @@
 [user]
 	name = Vaughn Walters
+	email = vaughnwalters@gmail.com
 [core]
 	excludesfile = /Users/vaughnwalters/.gitignore_global
+	pager = less -FRX
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
 [mergetool "sourcetree"]
-	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	cmd = /Users/vaughnwalters/Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 [gitreview]
 	remote = origin
@@ -18,3 +20,5 @@
 	required = true
 [include]
 	path = ~/.gitconfig.local
+[commit]
+	template = /Users/vaughnwalters/.stCommitMsg

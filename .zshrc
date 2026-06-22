@@ -25,10 +25,17 @@ alias postinstall="campaigns && nvm use 22 && npm ci && git remote remove origin
 alias please="sudo"
 alias mru="(cd ~ && mr u)"
 
+# Sourcetree: open the current repo in the Sourcetree app (or a path passed as $1).
+# stree needs an absolute path and silently ignores a bare ".", so resolve it here.
+stree() {
+  local target="${1:-$(git rev-parse --show-toplevel 2>/dev/null || pwd)}"
+  /Applications/Sourcetree.app/Contents/Resources/stree "${target:A}"
+}
+
 # nvm
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
 
 # Target MediaWiki-Docker
 export MW_SERVER=http://localhost:8080
@@ -39,9 +46,17 @@ export MEDIAWIKI_PASSWORD=dockerpass
 # for fresh
 export PATH=$PATH:~/.local/bin
 
+# Joplin terminal app (installed to ~/.joplin-bin)
+export PATH=$PATH:$HOME/.joplin-bin/bin
+export EDITOR=/usr/bin/vim                       # used by `joplin edit` (and git, crontab, etc.)
+# edit a note in vim, then auto-push to Dropbox once you close the editor
+jnote() { joplin edit "$@" && joplin sync; }
+
 # Claude Code
 export CLAUDE_CODE_EFFORT_LEVEL=max
-alias claude="claude --chrome"
+alias wmf-claude='/Users/vaughnwalters/workspace/gitlab/wmf-claude/bin/claude'
+# unsandboxed Claude-in-Chrome for browser work (the sandbox can't reach the extension)
+alias claude='command claude --chrome'
 
 # --- DIR_CONTENTS ---
 
